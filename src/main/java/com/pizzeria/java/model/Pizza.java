@@ -2,6 +2,7 @@ package com.pizzeria.java.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,8 +16,10 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(nullable = false)
 	private String name;
-	private String photo_url;
+	private String photoUrl;
+	@Column(nullable = false)
 	private Float price;
 	private LocalDateTime updatedAt;
 
@@ -36,12 +39,12 @@ public class Pizza {
 		this.name = name;
 	}
 
-	public String getPhoto_url() {
-		return photo_url;
+	public String getPhotoUrl() {
+		return photoUrl;
 	}
 
-	public void setPhoto_url(String photo_url) {
-		this.photo_url = photo_url;
+	public void setPhotoUrl(String photo_url) {
+		this.photoUrl = photo_url;
 	}
 
 	public Float getPrice() {
