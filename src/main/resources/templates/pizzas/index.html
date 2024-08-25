@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
+
+<head th:replace="~{fragments/fragments :: head}"></head>
+
 <body>
-    
+	<h1>pizza index</h1>
+
+	<div class="container">
+		<div class="row d-flex justify-content-evenly">
+			<div th:each="pizza : ${pizzas}" class="col-6 d-flex justify-content-center text-center">
+				<div class="card mt-3" style="width: 18rem;">
+					<img th:src="${pizza.photoUrl}" class="card-img-top p-2" alt="...">
+					<div class="card-body border border-secondary-subtle">
+						<p class="card-text">[[${pizza.name}]]</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
