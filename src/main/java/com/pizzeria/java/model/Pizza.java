@@ -18,10 +18,12 @@ public class Pizza {
 	private Integer id;
 	@Column(nullable = false)
 	private String name;
+	@Column(name = "photo_url")
 	private String photoUrl;
 	@Column(nullable = false)
 	private Float price;
-	private LocalDateTime updatedAt;
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt = LocalDateTime.now();
 
 	public Integer getId() {
 		return id;
@@ -61,6 +63,13 @@ public class Pizza {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String capName() {
+		String firstLetter = this.name.substring(0, 1).toUpperCase();
+		String restOfTheString = this.name.substring(1);
+
+		return firstLetter + restOfTheString;
 	}
 
 }
