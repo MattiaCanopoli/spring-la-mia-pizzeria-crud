@@ -8,3 +8,16 @@
 .bkcolor {
 	background-color: rgb(40,40,40);
 }
+
+
+.my-dimension{
+	transition: transform .5s; 	
+
+}
+
+
+.my-dimension:hover{
+  transform: scale(1.08);
+  box-shadow: rgb(255, 255, 255) 0 0 1rem;
+}
+
