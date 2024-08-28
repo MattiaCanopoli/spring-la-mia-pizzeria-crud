@@ -1,5 +1,6 @@
 package com.pizzeria.java.model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "pizza")
@@ -24,6 +26,12 @@ public class Pizza {
 	private Float price;
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt = LocalDateTime.now();
+	@Transient
+	private DecimalFormat format = new DecimalFormat("#,##0.00");
+
+	public Pizza() {
+		super();
+	}
 
 	public Integer getId() {
 		return id;
@@ -49,8 +57,8 @@ public class Pizza {
 		this.photoUrl = photo_url;
 	}
 
-	public Float getPrice() {
-		return price;
+	public String getPrice() {
+		return format.format(this.price);
 	}
 
 	public void setPrice(Float price) {
