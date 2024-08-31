@@ -26,6 +26,8 @@ public class Pizza {
 	private Float price;
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt = LocalDateTime.now();
+
+	private String description;
 	@Transient
 	private DecimalFormat format = new DecimalFormat("#,##0.00");
 
@@ -71,6 +73,18 @@ public class Pizza {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getDescription() {
+		String firstLetter = this.description.substring(0, 1).toUpperCase();
+		String restOfTheString = this.description.substring(1);
+
+		description = firstLetter + restOfTheString;
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String capName() {
