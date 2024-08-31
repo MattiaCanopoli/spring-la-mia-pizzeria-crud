@@ -4,28 +4,29 @@
 <head></head>
 
 <body>
-	<nav th:fragment="navbar(current)" class="navbar navbar-expand-lg bg-secondary sticky-top border-bottom border-2 border-light mb-3" data-bs-theme="dark">
-	  <div class="container">
-	    <a class="navbar-brand" href="/">Pizza Time</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	      <ul class="navbar-nav">
-	        <li class="nav-item">
-	          <a class="nav-link" aria-current="page" href="/pizzas" th:classappend="${current == 'pizzas' ? 'active' : 'non-active'}">Home</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Our Pizza
-	          </a>
-	          <ul class="dropdown-menu">
-	            <li th:each="pizza : ${pizzas}"><a class="dropdown-item" th:href="@{/pizzas/{id}(id=${pizza.id})}">[[${pizza.capName}]]</a></li>  
-			</ul>
-	        </li>
-	      </ul>
-	    </div>
-	  </div>
+	<nav th:fragment="navbar(current)"
+		class="navbar navbar-expand-lg bg-secondary sticky-top border-bottom border-2 border-light mb-3 justify-content-between"
+		data-bs-theme="dark">
+		<div class="container">
+			<a class="navbar-brand" href="/">Pizza Time</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" th:href="@{/pizzas}" th:classappend="${current == 'pizzas' ? 'active' : 'non-active'}">Our Pizza</a>
+					</li>
+				</ul>
+			</div>
+			
+				<form th:action="@{/pizzas}" class="d-flex" role="search">
+					<input class="form-control me-2 bkcolor" name="name" type="search" placeholder="Search">
+					<button class="btn btn-outline-light" type="submit">Search</button>
+				</form>
+			
+		</div>
 	</nav>
 
 </body>
