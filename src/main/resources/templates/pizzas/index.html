@@ -20,9 +20,15 @@
 								th:href="@{/pizzas/{id}(id=${pizza.id})}">[[${pizza.capName}]]</a>
 						</p>
 					</div>
+					<div class="card-body bkcolor border-top">
+						<p class="card-text text-light">
+							<a class="text-decoration-none text-reset"
+								th:href="@{/pizzas/{id}(id=${pizza.id})}">[[${pizza.price}]]€</a>
+						</p>
+					</div>
 				</div>
 			</div>
-			<div th:unless="${pizzas.size() > 0}" class="row d-flex justyfy-content-center">
+			<div th:unless="${pizzas.size() > 0}" class="col-6 d-flex justyfy-content-center">
 				<div class="text-center text-light bkcolor">
 					<h2>Non ci sono elementi da mostrare</h2>
 				</div>
