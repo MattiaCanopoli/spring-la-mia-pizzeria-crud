@@ -23,6 +23,7 @@ public class PizzaController {
 
 	private String lorem = "Lorem ipsum dolor sit amet, consectetur adipisci elit";
 
+	// READ
 	@GetMapping
 	public String index(Model model, @RequestParam(name = "name", required = false) String name) {
 
@@ -38,6 +39,7 @@ public class PizzaController {
 		return "/pizzas/index";
 	}
 
+	// SHOW
 	@GetMapping("/{id}")
 	public String show(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("thisPizza", pizzaRepo.findById(id).get());
@@ -45,4 +47,15 @@ public class PizzaController {
 		model.addAttribute("lorem", lorem);
 		return "/pizzas/show";
 	}
+
+	// CREATE
+	@GetMapping("/create")
+	public String create(Model model) {
+		return ("/pizzas/create");
+	}
+
+	// STORE
+	// EDIT
+	// UPDATE
+	// DELETE
 }
