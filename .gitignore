@@ -33,5 +33,5 @@ build/
 .vscode/
 
 
-*/show-old.html
+src/main/resources/templates/pizzas/show-old.html
 src/main/resources/application.properties
