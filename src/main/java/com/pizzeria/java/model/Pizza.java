@@ -1,8 +1,10 @@
 package com.pizzeria.java.model;
 
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,8 +36,9 @@ public class Pizza {
 	@Column(nullable = false)
 	private Float price;
 
+	@UpdateTimestamp
 	@Column(name = "updated_at")
-	private LocalDateTime updatedAt;
+	private Timestamp updatedAt;
 
 	private String description;
 
@@ -43,7 +46,7 @@ public class Pizza {
 	private DecimalFormat format = new DecimalFormat("#,##0.00");
 
 	@Transient
-	private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy MM dd hh:mm");
+	private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm");
 
 	public Pizza() {
 		super();
@@ -78,31 +81,32 @@ public class Pizza {
 	}
 
 	public String getFormattedPrice() {
-		if (!this.price.isNaN()) {
+		if (this.price != null) {
 			return format.format(this.price);
 		}
 
-		return "0";
+		return this.price.toString();
 	}
 
 	public void setPrice(Float price) {
 		this.price = price;
 	}
 
-	public LocalDateTime getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(LocalDateTime updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
-//	public String getFormattedUpadatedAt() {
-//		if (!this.updatedAt.equals(null)) {
-//			return this.updatedAt.format(dateFormat);
-//		}
-//		return "";
-//	}
+	public String getFormattedUpdatedAt() {
+		if (this.updatedAt != null) {
+			return this.updatedAt.toLocalDateTime().format(dateFormat);
+		}
+
+		return null;
+	}
 
 	public String getDescription() {
 		return this.description;
