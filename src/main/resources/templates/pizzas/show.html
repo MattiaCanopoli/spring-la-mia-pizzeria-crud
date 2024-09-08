@@ -22,8 +22,13 @@
 						<p class="card-text text-light">[[*{price}]]€</p>
 					</div>
 					<div class="d-flex justify-content-center card-body bkcolor border-top">
-						<button class="btn btn-success mx-2 border border-1 border-light"
-							type="submit">Modifica</button>
+						<button class="btn btn-success mx-2 border border-1 border-light" type="submit">
+							<a class="text-reset text-decoration-none"
+								th:href="@{edit/{id}(id=*{id})}">Modifica</a>
+						</button>
+
+
+
 						<form th:action="@{'/pizzas/delete/{id}' (id=*{id})}" method="post">
 							<button class="btn btn-danger mx-2 border border-1 border-light"
 								type="submit">Cancella</button>
