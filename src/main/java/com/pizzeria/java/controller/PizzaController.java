@@ -38,7 +38,7 @@ public class PizzaController {
 
 			pizzas = pizzaRepo.findByNameContains(name);
 		} else {
-			pizzas = pizzaRepo.findAll(Sort.by("id"));
+			pizzas = pizzaRepo.findAll(Sort.by("name"));
 		}
 		model.addAttribute("pizzas", pizzas);
 		return "/pizzas/index";
@@ -70,8 +70,26 @@ public class PizzaController {
 		pizzaRepo.save(pizzaForm);
 		return ("redirect:/pizzas");
 	}
+
 	// EDIT
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+
+		model.addAttribute("pizza", pizzaRepo.findById(id).get());
+
+		return ("/pizzas/edit");
+	}
 	// UPDATE
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("pizza") Pizza pizzaEdit, BindingResult bindingResults, Model model) {
+		if (bindingResults.hasErrors()) {
+			return ("/pizzas/edit");
+		}
+
+		pizzaRepo.save(pizzaEdit);
+		return ("redirect:/pizzas");
+	}
 	// DELETE
 
 	@PostMapping("/delete/{id}")
