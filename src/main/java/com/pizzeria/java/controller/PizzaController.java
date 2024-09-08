@@ -88,7 +88,7 @@ public class PizzaController {
 		}
 
 		pizzaRepo.save(pizzaEdit);
-		return ("redirect:/pizzas");
+		return ("redirect:/pizzas/{id}");
 	}
 	// DELETE
 
