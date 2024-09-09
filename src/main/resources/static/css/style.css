@@ -9,6 +9,11 @@
 	background-color: rgb(41,41,41);
 }
 
+.bkcolor-transparent {
+	background-color: rgba(41,41,41,0.4);
+}
+
+
 
 .my-dimension{
 	transition: transform .5s; 	
