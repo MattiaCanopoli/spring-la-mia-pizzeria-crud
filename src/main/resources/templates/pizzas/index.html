@@ -8,6 +8,12 @@
 
 	<div class="container my-4">
 		
+		<div class="row justify-content-center">
+					<div class="col-6">
+						<h1 class="text-light text-center  my-5 bkcolor-transparent">Our Pizza</h1>
+					</div>
+				</div>
+		
 		<th:block th:if="${createMessage != null}">
 			<th:block th:replace="~{fragments/fragments :: create-alert(${createMessage})}"></th:block>
 		</th:block>
