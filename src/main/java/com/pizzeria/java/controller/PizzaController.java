@@ -27,8 +27,6 @@ public class PizzaController {
 	@Autowired
 	private PizzaRepository pizzaRepo;
 
-	private String lorem = "Lorem ipsum dolor sit amet, consectetur adipisci elit";
-
 	// READ
 	@GetMapping
 	public String index(Model model, @RequestParam(name = "name", required = false) String name) {
@@ -50,7 +48,6 @@ public class PizzaController {
 	public String show(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("thisPizza", pizzaRepo.findById(id).get());
 		model.addAttribute("pizzas", pizzaRepo.findAll());
-		model.addAttribute("lorem", lorem);
 		return "/pizzas/show";
 	}
 
